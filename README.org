@@ -1,1 +1,43 @@
 * Facebook Send API mock
+
+
+** Example
+
+*** Send message
+#+BEGIN_SRC sh
+curl -k -d '{"message":{"text":"Hello World!"}}' -H "Content-Type: application/json" -X POST https://graph.facebook.com/v2.6/me/messages
+#+END_SRC
+
+Response: 
+#+BEGIN_SRC sh
+{
+  "message_id": "mid.$cAAJsujCd2ORj_1qmrFdzhVa-4cvO", 
+  "recipient_id": "1254477777772919"
+}
+#+END_SRC
+
+Logs: 
+#+BEGIN_SRC sh
+{'message': {'text': 'Hello World!'}}
+127.0.0.1 - - [03/Jul/2018 10:19:53] "POST /v2.6/me/messages HTTP/1.1" 200 -
+#+END_SRC
+
+*** Get all messages
+
+#+BEGIN_SRC sh
+curl -k -X GET https://graph.facebook.com/messages
+#+END_SRC
+
+Response:
+#+BEGIN_SRC sh
+{
+  "messages": [
+    "Hello World!"
+  ]
+}
+#+END_SRC
+
+Logs:
+#+BEGIN_SRC sh
+127.0.0.1 - - [03/Jul/2018 10:20:38] "GET /messages HTTP/1.1" 200 -
+#+END_SRC
